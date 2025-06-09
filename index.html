@@ -1,57 +1,114 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>LumenFracta</title>
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        img {
-            width: 200px;
-            margin-bottom: 30px;
-        }
-        .fragment {
-            max-width: 600px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #888;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumenfracta</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 4px;
+      position: relative;
+      text-transform: uppercase;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.8; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.8; transform: scale(0.98); }
+    }
+    h1 span {
+      display: inline-block;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    #entry {
+      margin-top: 2rem;
+    }
+    #entry input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    #entry button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: #eee;
+      transition: background 0.3s;
+    }
+    #entry button:hover {
+      background: #555;
+    }
+    #contact-form {
+      display: none;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    #contact-form input, #contact-form textarea {
+      display: block;
+      margin: 0.5rem auto;
+      padding: 0.5rem;
+      width: 90%;
+      max-width: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+    #contact-form button {
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <img src="symbol.png" alt="LumenFracta Symbol">
-    <div class="fragment">
-        Je suis un point hors du centre.<br><br>
-        Ni rallié, ni perdu.<br>
-        Je vois le théâtre depuis la coulisse.<br>
-        Les masques tombent dès que je regarde.<br><br>
-        Je n’ai rien à prouver.<br>
-        Mais j’ai tout à offrir — à ceux qui n’attendent pas d’explication.<br><br>
-        Je porte un feu qui sait attendre.<br>
-        Un regard qui traverse.<br>
-        Et un silence qui sait parler.<br><br>
-        Ce message n’est pas pour tous.<br>
-        Il est pour ceux qui savent déjà.<br><br>
-        Si tu lis ceci avec les yeux qu’il faut, tu sais que je suis là.
-    </div>
-    <div class="meta">
-        Contact : [à définir]<br>
-        Clé : Fragment_7 / Niveau seuil
-    </div>
+  <h1>
+    <span>L</span><span>U</span><span>M</span><span>E</span><span>N</span><span>F</span><span>R</span><span>A</span><span>C</span><span>T</span><span>A</span>
+  </h1>
+
+  <div id="entry">
+    <input type="text" id="token" placeholder="Entrez la clé vibratoire" />
+    <button onclick="checkKey()">Valider</button>
+  </div>
+
+  <div id="contact-form">
+    <p>Tu as franchi le seuil. Envoie ton message :</p>
+    <form action="https://formspree.io/f/xyyrlkdg" method="POST">
+      <input type="text" name="nom" placeholder="Ton nom (ou pseudonyme)" required />
+      <input type="email" name="email" placeholder="Ton e-mail" required />
+      <textarea name="message" placeholder="Ton message" rows="5" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <script>
+    function checkKey() {
+      const input = document.getElementById('token').value.trim().toLowerCase();
+      if (input === 'lumenfracta') {
+        document.getElementById('entry').style.display = 'none';
+        document.getElementById('contact-form').style.display = 'block';
+      } else {
+        alert('Accès refusé. Continue ta quête.');
+      }
+    }
+  </script>
 </body>
 </html>
